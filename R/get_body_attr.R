@@ -1,8 +1,8 @@
 #' @title Get Event Body Attribute
 #'
-#' @description This function returns an attribute or list of attributes from the body of an event or list of events
+#' @description This function returns an attribute or list of attributes from the body of an event or list of events.
 #'
-#' @param obj An event or a list of events
+#' @param obj An event or a list of events.
 #' @param attr A character string indicating the attribute to return.
 #'
 #' @examples

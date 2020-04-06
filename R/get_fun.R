@@ -2,7 +2,28 @@
 #'
 #' @description Get the function in a handler, handler_list or dispatcher objects.
 #'
-#' @param obj An object of tipe `handler`, `handler_list` or `dispatcher`.
+#' @param obj An object of type handler, handler_list or dispatcher.
+#'
+#' @examples
+#'
+#' set_birth_date <- function(obj, event){
+#'   obj$birthDate <- event$body$birthDate
+#'   return(obj)
+#' }
+#'
+#' set_death_date <- function(obj, event){
+#'   obj$deathDate <- event$body$deathDate
+#'   return(obj)
+#' }
+#'
+#' birth_handler <- handler(type = 'BIRTH', FUN = set_birth_date)
+#' get_fun(birth_handler)
+#'
+#' death_handler <- handler(type = 'DEATH', FUN = set_death_date)
+#' get_fun(death_handler)
+#'
+#' handlers <- handlers_list(birth_handler, death_handler)
+#' get_fun(handlers)
 #'
 #' @export
 get_fun <- function(obj) { UseMethod("get_fun") }

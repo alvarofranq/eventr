@@ -2,7 +2,7 @@
 #'
 #' @description This function returns the header of an event or list of events.
 #'
-#' @param obj An event or a list of events
+#' @param obj An event or a list of events.
 #'
 #' @examples
 #'

@@ -1,25 +1,27 @@
 #' @title Handler Constructor
 #'
-#' @description Construct a Handler object
+#' @description Construct a handler object.
 #'
-#' @param type A character string indicating the event type to handle
-#' @param FUN A function which use an obj and a event as inputs and returns an object as output
+#' @param type A character string indicating the event type to handle.
+#' @param FUN A function which use an obj and an event as input parameters and returns an object as output.
 #'
 #' @examples
-#' setBirthDate <- function(obj, event){
+#'
+#' set_birth_date <- function(obj, event){
 #'   obj$birthDate <- event$body$birthDate
 #'   return(obj)
 #' }
 #'
-#' setDeathDate <- function(obj, event){
+#' set_death_date <- function(obj, event){
 #'   obj$deathDate <- event$body$deathDate
 #'   return(obj)
 #' }
 #'
-#' birthHandler <- handler(type = 'BIRTH', FUN = setBirthDate)
-#' deathHandler <- handler(type = 'DEATH', FUN = setDeathDate)
+#' birth_handler <- handler(type = 'BIRTH', FUN = set_birth_date)
+#' birth_handler
 #'
-#' handlers <- append(birthHandler, deathHandler)
+#' death_handler <- handler(type = 'DEATH', FUN = set_death_date)
+#' death_handler
 #'
 #' @export
 handler <- function(type, FUN){

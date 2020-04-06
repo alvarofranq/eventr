@@ -2,13 +2,14 @@
 #'
 #' @description this functions allows you to add events or event_list object to an other event or event_list objects.
 #'
-#' @param e1 An object of class event or event_list
-#' @param e2 An object of class event
+#' @param e1 An object of class event or event_list.
+#' @param e2 An object of class event.
 #'
 #' @examples
 #'
 #' library(eventr)
-#' library(magrittr)
+#' library(dplyr)
+#' library(purrr)
 #'
 #' birth_event <- event(
 #'   id = 'first-id',
@@ -21,12 +22,12 @@
 #'   id = 'second-id',
 #'   type = 'MEASUREMENT',
 #'   time = '1937-11-09',
-#'   weight = list(value = 10,2, unit = "kg"),
-#'   height = list(value = 0,76, unit = "m")
+#'   weight = list(value = 10.2, unit = "kg"),
+#'   height = list(value = 0.76, unit = "m")
 #' )
 #'
 #' death_event <- event(
-#'   id = 'second-id',
+#'   id = 'third-id',
 #'   type = 'DEATH',
 #'   time = '2019-05-22',
 #'   death_date = '2019-05-22')
@@ -38,6 +39,15 @@
 #' the_event_list <- birth_event +
 #'   measurement_event +
 #'   death_event
+#'
+#' the_event_list
+#'
+#' # transform the_event_list to data.frame
+#'
+#' the_event_list %>%
+#'   purrr::map(as.data.frame) %>%
+#'   bind_rows()
+#'
 #'
 #' @export
 add_event <- function(e1, e2) UseMethod("add_event")
@@ -72,8 +82,8 @@ add_event.event_list <- function(e1, e2){
 #' @description + allows the user to add events or event_list object to an
 #' other event or event_list objects.
 #'
-#' @param e1 An object of class event or event_list
-#' @param e2 An object of class event
+#' @param e1 An object of class event or event_list.
+#' @param e2 An object of class event.
 #'
 #' @examples
 #'
@@ -96,7 +106,7 @@ add_event.event_list <- function(e1, e2){
 #' )
 #'
 #' death_event <- event(
-#'   id = 'second-id',
+#'   id = 'third-id',
 #'   type = 'DEATH',
 #'   time = '2019-05-22',
 #'   death_date = '2019-05-22')

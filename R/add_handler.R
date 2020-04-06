@@ -1,8 +1,8 @@
 #' @title Add Handler
 #'
-#' @description Merge two handler objects or add a handler in a handlers_list or dispatcher objects
+#' @description Merge two handler objects or add a handler in a handlers_list or dispatcher objects.
 #'
-#' @param obj A handler, handler_list or dispatcher object
+#' @param obj A handler, handler_list or dispatcher object.
 #' @param .handler A handler object.
 #'
 #' @examples
@@ -93,6 +93,40 @@ add_handler.dispatcher <- function(obj, .handler){
 
 }
 
+#' @title Add handlers to a handlers_list
+#'
+#' @description Merge two handler objects or add a handler in a handlers_list or dispatcher objects.
+#'
+#' @param e1 A handler, handler_list or dispatcher object.
+#' @param e2 A handler or handlers_list object.
+#'
+#' @examples
+#'
+#' library(eventr)
+#' library(magrittr)
+#'
+#' birth_handler <- handler(type = 'BIRTH', FUN = function(obj, event){
+#'   obj$birth_date <- get_body_attr(event, 'birth_date')
+#'   return(obj)
+#' })
+#'
+#' measurement_handler <- handler(type = 'MEASUREMENT', FUN = function(obj, event){
+#'
+#'   obj$weight <- get_body_attr(event, 'weight')
+#'   obj$height <- get_body_attr(event, 'height')
+#'   return(obj)
+#'
+#' })
+#'
+#' death_handler <- handler(type = 'DEATH', FUN = function(obj, event){
+#'   obj$death_date <- get_body_attr(event, 'death_date')
+#'   return(obj)
+#' })
+#'
+#' handlers <- birth_handler +
+#'   measurement_handler +
+#'   death_handler
+#'
 #' @rdname handler-add
 #' @export
 "+.handler" <- function(e1, e2) {
@@ -100,21 +134,3 @@ add_handler.dispatcher <- function(obj, .handler){
   add_handler(e1, e2)
 
 }
-
-# e1 <- purrr::map(e1, function(e) return(e))
-#
-# if(is_handlers_list(e2)){
-#
-#   e2 <- purrr::map(e2, function(e) return(e))
-#
-#   li <- c(e1, e2)
-#   out <- do.call('handlers_list', args = li)
-#
-# } else if (is_handler(e2)) {
-#
-#   li <- c(e1, e2)
-#   out <- do.call('handlers_list', args = li)
-#
-# }
-#
-# return(out)

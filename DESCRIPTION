@@ -1,6 +1,6 @@
 Package: eventr
 Title: Create Event Based Data Models
-Version: 0.0.1.9000
+Version: 0.0.1.9001
 Authors@R: c(
     person(given = "Alvaro", family = "Franquet", role = c("aut", "cre"), email = "afranquet@salutemporda.cat"),
     person(given = "Maria Antonia", family = "Barceló", role = c("aut"), email = "antonia.barcelo@udg.edu", comment = c(ORCID = "0000-0001-9720-690X")),

@@ -1,13 +1,25 @@
 #' @title Event list
 #' @description Event list constructor
 #'
-#' @param ... A set of Event type objects.
+#' @param ... A set of `event` type objects.
 #'
 #' @examples
-#' birthEvent <- event('first-id', type = 'BIRTH', time = '1936-11-09', birthDate = '1936-11-09')
-#' deathEvent <- event('second-id', type = 'DEATH', time = '2019-05-22', deathDate = '2019-05-22')
 #'
-#' eventList <- event_list(birthEvent, deathEvent)
+#' birth_event <- event(
+#'   id = 'first-id',
+#'   type = 'BIRTH',
+#'   time = '1936-11-09',
+#'   birth_date = '1936-11-09'
+#' )
+#'
+#' death_event <- event(
+#'   id = 'second-id',
+#'   type = 'DEATH',
+#'   time = '2019-05-22',
+#'   death_date = '2019-05-22'
+#' )
+#'
+#' the_event_list <- event_list(birth_event, death_event)
 #'
 #' @importFrom purrr map_chr
 #'

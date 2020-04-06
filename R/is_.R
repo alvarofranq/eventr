@@ -2,9 +2,9 @@
 #'
 #' @description Test if an object is some of the classes implemented in `eventr` package.
 #'
-#' @param x a `R` object
+#' @param x any `R` object.
 #'
-#' @example
+#' @examples
 #'
 #' birth_event <- event(
 #'   id = 'first-id',
