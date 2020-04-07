@@ -7,7 +7,7 @@ Authors@R: c(
     person(given = "Marc", family = "Saez", role = c("aut"), email = "marc.saez@udg.edu", comment = c(ORCID = "0000-0003-1882-0157")),
     person(given = "Pere", family = "Plaja", role = c("aut"), email = "pplaja@salutemporda.cat")
     )
-Description: This package contains a set of tools which allow the user to build event based architectures using a simple grammar.
+Description: A grammar for building event-based architectures. You build the events and the manipulators. The dealer is responsible for sending each event to its corresponding handler.
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
@@ -19,4 +19,3 @@ Imports:
 Suggests: 
     knitr,
     rmarkdown
-VignetteBuilder: knitr
