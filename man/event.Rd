@@ -17,7 +17,7 @@ event(id, type, time, ...)
 
 \item{type}{A character indicating the event type}
 
-\item{time}{A character strign indicating the event timestamp}
+\item{time}{A character string indicating the event timestamp}
 
 \item{...}{A list with the event attributes.}
 }

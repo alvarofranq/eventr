@@ -3,7 +3,7 @@
 #' @description Event constructor
 #' @param id A character identifier
 #' @param type A character indicating the event type
-#' @param time A character strign indicating the event timestamp
+#' @param time A character string indicating the event timestamp
 #' @param ... A list with the event attributes.
 #'
 #' @examples
