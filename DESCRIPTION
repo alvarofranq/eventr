@@ -5,7 +5,7 @@ Authors@R: c(
     person(given = "Alvaro", family = "Franquet", role = c("aut", "cre"), email = "afranquet@salutemporda.cat"),
     person(given = "Maria Antonia", family = "Barceló", role = c("aut"), email = "antonia.barcelo@udg.edu", comment = c(ORCID = "0000-0001-9720-690X")),
     person(given = "Marc", family = "Saez", role = c("aut"), email = "marc.saez@udg.edu", comment = c(ORCID = "0000-0003-1882-0157")),
-    person(given = "Pere", family = "Plaja", role = c("aut"))
+    person(given = "Pere", family = "Plaja", role = c("aut"), email = "pplaja@salutemporda.cat")
     )
 Description: This package contains a set of tools which allow the user to build event based architectures using a simple grammar.
 License: GPL-3
