@@ -15,7 +15,7 @@ install.packages("eventr")
 
 # Or the development version from GitHub:
 # install.packages("devtools")
-devtools::install_github("tidyverse/ggplot2")
+devtools::install_github("alvarofranq/eventr")
 ```
 
 ## Example
