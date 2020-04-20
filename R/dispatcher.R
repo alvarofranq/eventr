@@ -4,6 +4,12 @@
 #'
 #' @param handlers A list of handlers build using handler() function.
 #'
+#' @return The \code{dispatcher()} function retuns a \code{dispatcher} object. A
+#' \code{dispatcher} object contains two items: \code{handlers} and \code{dispatch}.
+#' \code{handlers} is a \code{handlers_list} object with all the handlers definitions.
+#' \code{dispatch} is a function with two params: obj and event. The \code{dispatch()}
+#' function allows the user to run a list of events using the handlers definitions.
+#'
 #' @examples
 #'
 #' library(eventr)
