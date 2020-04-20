@@ -17,6 +17,9 @@ validate_handler(type, FUN)
 
 \item{FUN}{A function which use an obj and an event as input parameters and returns an object as output.}
 }
+\value{
+
+}
 \description{
 Construct a handler object.
 }
