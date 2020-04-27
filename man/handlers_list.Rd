@@ -16,7 +16,8 @@ new_handlers_list(...)
 \item{...}{A set of handler objects.}
 }
 \description{
-A handler list constructor.
+A handler list constructor. The function validates the structure of
+the input params and creates a handlers_list object.
 }
 \examples{
 
@@ -28,8 +29,8 @@ measurement_handler <- handler(
   }
 )
 
-bmc_handler <- handler(
-  type = 'IMC',
+bmi_handler <- handler(
+  type = 'BMI',
   FUN  = function(obj, event) {
 
    obj$imc <- get_attr(event, 'mass') / get_attr(event, 'height')^2

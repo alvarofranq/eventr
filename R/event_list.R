@@ -1,7 +1,10 @@
 #' @title Event list
-#' @description Event list constructor
+#' @description Event list constructor. The function validates the structure of
+#' the input params and creates an event_list object.
 #'
 #' @param ... A set of `event` type objects.
+#'
+#' @return  The \code{event_list()} function returns a list of \code{event} objects.
 #'
 #' @examples
 #'

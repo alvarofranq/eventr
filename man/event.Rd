@@ -6,11 +6,11 @@
 \alias{event}
 \title{Event Constructor}
 \usage{
-new_event(id, type, time, ...)
+new_event(id = uuid::UUIDgenerate(), type, time = Sys.time(), ...)
 
 validate_event(id, type, time, ...)
 
-event(id, type, time, ...)
+event(id = uuid::UUIDgenerate(), type, time, ...)
 }
 \arguments{
 \item{id}{A character identifier}
@@ -20,6 +20,15 @@ event(id, type, time, ...)
 \item{time}{A character string indicating the event timestamp}
 
 \item{...}{A list with the event attributes.}
+}
+\value{
+The function returns an object of class \code{event}. \code{event}
+objects are implemented as a list of two main elements: A \code{head} and
+a \code{body}.The \code{head} contains an identifier (\code{id}), a string
+indicating the event type (\code{type}) and a \code{POSIXct} object indicating
+when the event occurs (\code{time}). The \code{body} containts the event attributes
+defined by the user. By default \code{id} is generated using \pkg{uuid} and \code{time}
+value is the result of \code{Sys.time()} function by default.
 }
 \description{
 Event constructor

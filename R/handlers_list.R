@@ -1,8 +1,11 @@
 #' @title Handler List Constructor
 #'
-#' @description A handler list constructor.
+#' @description A handler list constructor. The function validates the structure of
+#' the input params and creates a handlers_list object.
 #'
 #' @param ... A set of handler objects.
+#'
+#' @return The \code{handlers_list()} function returns a list of \code{handlers} objects.
 #'
 #' @examples
 #'
@@ -14,8 +17,8 @@
 #'   }
 #' )
 #'
-#' bmc_handler <- handler(
-#'   type = 'IMC',
+#' bmi_handler <- handler(
+#'   type = 'BMI',
 #'   FUN  = function(obj, event) {
 #'
 #'    obj$imc <- get_attr(event, 'mass') / get_attr(event, 'height')^2
@@ -24,7 +27,7 @@
 #'   }
 #' )
 #'
-#' handlers <- handlers_list(measurement_handler, bmc_handler)
+#' handlers <- handlers_list(measurement_handler, bmi_handler)
 #'
 #' @rdname handlers_list
 #' @export

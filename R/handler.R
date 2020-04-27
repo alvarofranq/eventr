@@ -5,6 +5,11 @@
 #' @param type A character string indicating the event type to handle.
 #' @param FUN A function which use an obj and an event as input parameters and returns an object as output.
 #'
+#' @return The \code{handler()} function returns an object of type \code{handler}. A \code{handler} object
+#' contains two elements: \code{type} and \code{FUN}. Type is a string indicating the type of event and FUN
+#' is a \code{R} function with to params: \code{obj} and \code{event}. \code{obj} is any R object and
+#' \code{event} is an \code{event} object returned by the \code{event()} function.
+#'
 #' @examples
 #'
 #' set_birth_date <- function(obj, event){
