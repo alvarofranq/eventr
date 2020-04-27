@@ -1,3 +1,8 @@
+##  This is a resubmission. In this version we have:
+
+* Improved package description.
+* Added the Value section in the documentation of the functions
+
 ## Test environments
 * local Windows 10 Pro, R 3.6.3
 * local Ubuntu 18.04.2 LTS, R 3.6.3
