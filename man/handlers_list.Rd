@@ -15,6 +15,9 @@ new_handlers_list(...)
 \arguments{
 \item{...}{A set of handler objects.}
 }
+\value{
+The \code{handlers_list()} function returns a list of \code{handlers} objects.
+}
 \description{
 A handler list constructor. The function validates the structure of
 the input params and creates a handlers_list object.
@@ -39,6 +42,6 @@ bmi_handler <- handler(
   }
 )
 
-handlers <- handlers_list(measurement_handler, bmc_handler)
+handlers <- handlers_list(measurement_handler, bmi_handler)
 
 }

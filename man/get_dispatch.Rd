@@ -9,6 +9,10 @@ get_dispatch(obj)
 \arguments{
 \item{obj}{An object of class dispatcher.}
 }
+\value{
+This function returns a function with three parameters \code{obj}, \code{events} and \code{accumulate}.
+This function allows the user to evaluate a set of events.
+}
 \description{
 This function returns the dispatch function of a dispatcher type object.
 }
