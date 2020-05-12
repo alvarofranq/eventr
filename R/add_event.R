@@ -85,6 +85,8 @@ add_event.event_list <- function(e1, e2){
 #' @param e1 An object of class event or event_list.
 #' @param e2 An object of class event.
 #'
+#' @import magrittr
+#'
 #' @examples
 #'
 #' library(eventr)
