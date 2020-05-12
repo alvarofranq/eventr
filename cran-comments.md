@@ -4,7 +4,7 @@
 * Added the Value section in the documentation of the functions
 
 ## Test environments
-* local Windows 10 Pro, R 3.6.3
+* local Windows 10 Pro, R 4.0.0
 * local Ubuntu 18.04.2 LTS, R 3.6.3
 * local Mac OS Darwin 15.6.0, R 3.6.3
 * win-builder (devel and release)
