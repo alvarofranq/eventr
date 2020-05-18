@@ -11,6 +11,9 @@ add_handler(obj, .handler)
 
 \item{.handler}{A handler object.}
 }
+\value{
+Retun a \code{handlers_list} object.
+}
 \description{
 Merge two handler objects or add a handler in a handlers_list or dispatcher objects.
 }

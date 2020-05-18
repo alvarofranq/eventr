@@ -9,6 +9,9 @@ get_id(obj)
 \arguments{
 \item{obj}{An event or a list of events.}
 }
+\value{
+\code{get_id} returns a character string.
+}
 \description{
 This function returns the identifier of an event or list of events.
 }

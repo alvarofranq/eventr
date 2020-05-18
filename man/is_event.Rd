@@ -21,6 +21,9 @@ is_dispatcher(x)
 \arguments{
 \item{x}{any `R` object.}
 }
+\value{
+Returns a logical value
+}
 \description{
 Test if an object is some of the classes implemented in `eventr` package.
 }

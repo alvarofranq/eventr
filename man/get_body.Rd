@@ -9,6 +9,9 @@ get_body(obj)
 \arguments{
 \item{obj}{An event or a list of events.}
 }
+\value{
+The \code{get_body} function returns a list object
+}
 \description{
 This function returns the body of an event or list of events.
 }

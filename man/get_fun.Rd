@@ -9,6 +9,9 @@ get_fun(obj)
 \arguments{
 \item{obj}{An object of type handler, handler_list or dispatcher.}
 }
+\value{
+Returns a function
+}
 \description{
 Get the function in a handler, handler_list or dispatcher objects.
 }

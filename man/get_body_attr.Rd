@@ -11,6 +11,9 @@ get_body_attr(obj, attr)
 
 \item{attr}{A character string indicating the attribute to return.}
 }
+\value{
+\code{get_body_attr()} returns a single attribute from an \code{event} or an \code{event_list} object.
+}
 \description{
 This function returns an attribute or list of attributes from the body of an event or list of events.
 }

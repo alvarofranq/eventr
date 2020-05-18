@@ -9,6 +9,9 @@ get_time(obj)
 \arguments{
 \item{obj}{An event or a list of events.}
 }
+\value{
+\code{get_time()} return a POSIXct object
+}
 \description{
 This function returns the time of an event or list of events.
 }

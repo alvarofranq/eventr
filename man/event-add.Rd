@@ -11,6 +11,9 @@
 
 \item{e2}{An object of class event.}
 }
+\value{
+Return an \code{event_list} object.
+}
 \description{
 + allows the user to add events or event_list object to an
 other event or event_list objects.

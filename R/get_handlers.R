@@ -4,7 +4,7 @@
 #'
 #' @param obj a dispatcher object.
 #'
-#' @return \code{get_handler} Returns an event.
+#' @return \code{get_handlers()} Returns an \code{event} object.
 #'
 #' @examples
 #'

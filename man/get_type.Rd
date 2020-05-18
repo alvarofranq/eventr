@@ -9,6 +9,9 @@ get_type(obj)
 \arguments{
 \item{obj}{An event or a list of events.}
 }
+\value{
+\code{get_type()} return a character string
+}
 \description{
 This function returns the type of an event or list of events.
 }

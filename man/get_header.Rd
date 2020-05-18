@@ -9,6 +9,9 @@ get_header(obj)
 \arguments{
 \item{obj}{An event or a list of events.}
 }
+\value{
+Return a list with three elements: \code{id}, \code{type} and \code{time}.
+}
 \description{
 This function returns the header of an event or list of events.
 }

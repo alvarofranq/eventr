@@ -9,6 +9,9 @@ get_handlers(obj)
 \arguments{
 \item{obj}{a dispatcher object.}
 }
+\value{
+\code{get_handlers()} Returns an \code{event} object.
+}
 \description{
 This function returns the list of handlers on a dispatcher type object.
 }
