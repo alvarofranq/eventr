@@ -4,6 +4,8 @@
 #'
 #' @param obj An event or a list of events.
 #'
+#' @return \code{get_time()} return a POSIXct object
+#'
 #' @examples
 #'
 #' first_event <- event(

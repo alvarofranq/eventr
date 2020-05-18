@@ -5,6 +5,8 @@
 #' @param obj An event or a list of events.
 #' @param attr A character string indicating the attribute to return.
 #'
+#' @return \code{get_body_attr()} returns a single attribute from an \code{event} or an \code{event_list} object.
+#'
 #' @examples
 #'
 #' first_event <- event(

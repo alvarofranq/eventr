@@ -4,6 +4,8 @@
 #'
 #' @param obj An event or a list of events.
 #'
+#' @return The \code{get_body} function returns a list object
+#'
 #' @examples
 #'
 #' first_event <- event(

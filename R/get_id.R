@@ -4,6 +4,8 @@
 #'
 #' @param obj An event or a list of events.
 #'
+#' @return \code{get_id} returns a character string.
+#'
 #' @examples
 #'
 #' first_event <- event(id = 'first-event', type = 'FIRST_EVENT', time = Sys.time())

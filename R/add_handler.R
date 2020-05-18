@@ -5,6 +5,8 @@
 #' @param obj A handler, handler_list or dispatcher object.
 #' @param .handler A handler object.
 #'
+#' @return Retun a \code{handlers_list} object.
+#'
 #' @examples
 #'
 #' library(eventr)
@@ -99,6 +101,8 @@ add_handler.dispatcher <- function(obj, .handler){
 #'
 #' @param e1 A handler, handler_list or dispatcher object.
 #' @param e2 A handler or handlers_list object.
+#'
+#' @return Retun a \code{handlers_list} object.
 #'
 #' @examples
 #'

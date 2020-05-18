@@ -4,6 +4,8 @@
 #'
 #' @param obj a dispatcher object.
 #'
+#' @return \code{get_handler} Returns an event.
+#'
 #' @examples
 #'
 #' library(eventr)

@@ -4,6 +4,8 @@
 #'
 #' @param x any `R` object.
 #'
+#' @return Returns a logical value
+#'
 #' @examples
 #'
 #' birth_event <- event(

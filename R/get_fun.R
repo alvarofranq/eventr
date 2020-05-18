@@ -4,6 +4,8 @@
 #'
 #' @param obj An object of type handler, handler_list or dispatcher.
 #'
+#' @return Returns a function
+#'
 #' @examples
 #'
 #' set_birth_date <- function(obj, event){
