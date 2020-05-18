@@ -1,7 +1,6 @@
 ##  This is a resubmission. In this version we have:
 
-* Improved package description.
-* Added the Value section in the documentation of the functions
+* Revised the values section in the documentation
 
 ## Test environments
 * local Windows 10 Pro, R 4.0.0
