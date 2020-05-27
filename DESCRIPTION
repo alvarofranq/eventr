@@ -1,6 +1,6 @@
 Package: eventr
 Title: Create Event Based Data Architectures
-Version: 1.0.0
+Version: 1.0.0.0001
 Authors@R: c(
     person(given = "Alvaro", family = "Franquet", role = c("aut", "cre"), email = "afranquet@salutemporda.cat"),
     person(given = "Maria Antonia", family = "Barceló", role = c("aut"), email = "antonia.barcelo@udg.edu", comment = c(ORCID = "0000-0001-9720-690X")),
@@ -18,8 +18,8 @@ LazyData: true
 RoxygenNote: 7.1.0
 Imports: 
     purrr,
-    dplyr,
     magrittr
 Suggests: 
     knitr,
+    dplyr,
     rmarkdown

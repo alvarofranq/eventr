@@ -7,8 +7,6 @@
 #' @return This function returns a function with three parameters \code{obj}, \code{events} and \code{accumulate}.
 #' This function allows the user to evaluate a set of events.
 #'
-#' @import dplyr
-#'
 #' @examples
 #'
 #' library(eventr)

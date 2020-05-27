@@ -1,7 +1,3 @@
-##  This is a resubmission. In this version we have:
-
-* Revised the values section in the documentation
-
 ## Test environments
 * local Windows 10 Pro, R 4.0.0
 * local Ubuntu 18.04.2 LTS, R 3.6.3
