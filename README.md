@@ -4,7 +4,11 @@
 <!-- badges: start -->
 <!-- badges: end -->
 
-The goal of eventr is to ...
+Event-driven programming is a programming paradigm where the flow of execution is defined by event.
+    In this paradigm an event can be defined as "a change in the state" of an object. This package offers a set
+    of functions for creating event-based architectures using three basic functions: events, dispatchers, and
+    handlers. The handlers manage the events, the dispatchers are in charge of redirecting the events to each of
+    the handlers, finally the events are the objects that carry the information about the change of state.
 
 ## Installation
 
