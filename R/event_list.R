@@ -31,7 +31,8 @@
 new_event_list <- function(...) {
 
   li <- list(...)
-  times <- purrr::map_chr(li, get_time)
+  times <- purrr::map(li, get_time)
+  times <- unlist(times)
   the_order <- order(times)
   li <- li[the_order]
   .event_list <- structure(.Data = li, class = c('event_list', 'list'))
