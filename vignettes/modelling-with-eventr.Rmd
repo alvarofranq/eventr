@@ -1,0 +1,232 @@
+---
+title: "modelling-with-eventr"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{modelling-with-eventr}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+This vignette shows how to use the \pkg{eventr}  package to implement an event-based data model that aims to structure an individual's medical information such as their date of birth, date of death, and various anthropometric data.
+
+The first step is to define what information to store and how you want to store that information.  For this example, we want to record the following information: date of birth, date of death, and anthropometric data.  The anthropometric data consist of: height, weight, and body mass index. Body mass index is calculated from height and weight.
+
+Once we are clear about what information we need, we must define the structure of the individual object.
+
+# Structure of the individual
+
+This example defines the individual object as a list with three elements:  `birth_date`, `death_date` and `anthropometric_measures`.   The element `anthropometric_measures` is a list with three more elements:  `weight`, `height`, and `body_mass_index`.
+
+```{r}
+library(eventr)
+
+new_individual <- function() {
+  return(
+    list(
+      birth_date = NA,
+      death_date = NA,
+      anthropometric_measures = list(
+        weight = NA,
+        height = NA,
+        body_mass_index = NA
+      )
+    )
+  )
+}
+ 
+individual <- new_individual()
+str(individual)
+```
+
+# Create the specs
+
+Given the proposed objectives, it is necessary to create, at least, the specifications of three events: the Birth event, the Death event, and the Anthropometric Measurements event.  The specification of an event is a function that returns an event-type object.
+
+```{r, eval=FALSE}
+
+specification <- function(PARAMS) {
+  return(
+    event(
+      id = EVENT_ID,
+      type = EVENT_TYPE,
+      time = EVENT_TIME,
+      EVENT_PARAMS
+    )
+  )
+}
+
+
+```
+
+The event specification `add_birth_spec` has as parameters `event_id` and `birth_date`. The parameter `event_id` is a character that identifies a specific event. It must be a unique value.  In case of not providing an identifier, the function  `event()` assigns a universally unique identifier (`uuid`) using the `uuid` (@uuidpkg) package.  The `birth_date` parameter must be a date in format `YYYY-MM-DD`.  For this example, the time  parameter will be equal to the date of birth `birth_date`.
+
+```{r}
+
+add_birth_spec <- function(event_id, birth_date) {
+  return(
+    event(
+      id = event_id,
+      type = 'BIRTH',
+      time = birth_date,
+      birth_date = birth_date
+    )
+  )
+}
+
+
+```
+
+The event specification `add_death_spec` has `event_id` and `death_date` as parameters. The `event_id` parameter is equal to the specification `add_birth_spec` and the parameter `death_date` is similar to the `birth_date` parameter of that specification.
+
+```{r}
+
+add_death_spec <- function(event_id,  death_date){ 
+  return(
+	   event(
+	     id  =  event_id,
+      type  =  'DEATH',
+      time  =  death_date,
+      death_date  =  death_date 
+    )
+  )
+}
+
+```
+
+The event specification `add_anthropometric_measures_spec` has three parameters: `event_id` (same as above), `weight` and `height`. The `weight` parameter represents the individual's weight in kilograms.  The `height` parameter represents the height of the individual in meters. Since the body mass index is calculated from these two values, it does not need to be included in the event specification.  The handler will be responsible for performing the calculations.
+
+```{r}
+add_anthropometric_measures_spec <- function(event_id,  time,	weight,  height){
+  return(
+    event(
+      id  =  event_id,
+      time  =  time,
+      type  =  'ADD_ANTHROPOMETRIC_MEASURES',
+      weight  =  weight,
+      height  =  height 	
+    )
+  ) 
+}
+```
+
+# Create the handlers
+
+The function of handlers is to transform the attributes of an object (in this case the `individual` object) from the information contained in an event.   For each type of event created there must be a `handler`.
+
+The `handler` of the event `Birth` (`birth_handler`) is responsible for modifying the attribute `birth_date` of the `individual` object, assigning it the value `birth_date` from the incoming event.
+
+```{r}
+birth_handler <- handler(
+  type = 'BIRTH', 
+  FUN = function(obj, event){ 
+  
+  obj$birth_date <- get_body_attr(event, 'birth_date') 
+  return(obj)
+})
+```
+
+The `handler` of the event DEATH (`death_handler`) is responsible for modifying the `death_date` attribute of the individual object, assigning it the value `death_date` of the incoming event.
+
+```{r}
+death_handler  <-  handler(
+   type = 'DEATH',  
+   FUN = function(obj,  event){ 
+
+	   obj$death_date <- 
+       get_body_attr(event, 'death_date')
+	   return(obj)
+
+  })
+```
+
+The handler of the event `ADD_ANTHROPOMETRIC_MEASURES` (`anthropometric_measures_handler`) is somewhat more complex.  This handler assigns the weight and height values from the event to the weight and height attributes of the individual object and calculates the value of the `body_mass_index` attribute from them.
+
+```{r}
+anthropometric_measures_handler  <-  handler( 
+  type = 'ADD_ANTHROPOMETRIC_MEASURES',
+  FUN  = function(obj,  event){ 
+  
+     weight  =  get_body_attr(event,  'weight') 
+     height  =  get_body_attr(event,  'height') 
+     body_mass_index  =  weight  /  height^2
+  
+      obj$anthropometric_measures$weight = weight 
+      obj$anthropometric_measures$height = height
+      obj$anthropometric_measures$body_mass_index = body_mass_index 
+  
+      return(obj) 
+  
+  }
+)
+```
+
+# Create the dispatcher
+
+The  `dispatcher()` function creates, from the specified handlers , a dispatcher-type object. This object has two elements: the list of handlers and the function `dispatch()`    , which is the function responsible for sending each event to its respective handler.
+
+```{r}
+dispatcher <- dispatcher( 
+  handlers = handlers_list( 
+    birth_handler,
+    death_handler,
+    anthropometric_measures_handler 
+  )
+)
+
+str(dispatcher,  max.level  =  1)
+```
+
+# Create the event occurrences
+
+The event occurrences are those events that have taken place and have changed the state of the `individual` object.  For this example, four occurrences have been created.  The first corresponds to the birth of the individual, the second and third to two moments in which anthropometric measurements have been taken and finally, the death of the individual.
+
+```{r}
+the_events  <-
+  add_birth_spec('first-event', birth_date  =  as.Date('1936-11-09')) +
+  add_anthropometric_measures_spec('second-id', as.Date('1951-01-26'), 65, 1.72) +
+  add_anthropometric_measures_spec('third-id', as.Date('1982-05-03'), 70, 1.72)  + 
+  add_death_spec('fourth-id', death_date  =  as.Date('2018-05-11'))
+```
+
+# Run the events
+
+Once the events are created, we can calculate the state of the `individual` object using the `dispatch()` function of the dispatcher object.
+
+```{r}
+dispatch <- get_dispatch(dispatcher)
+individual_01 <- dispatch(obj = individual,events=the_events) 
+individual_01
+```
+
+It may be of interest to obtain the state of the individual in each of the events.  For this, the `dispatch()` function allows to specify it using the accumulate parameter.  The result is a list with as many elements as there are events plus one.
+
+```{r}
+library(dplyr)
+library(purrr)
+
+individual_02 <- dispatch(obj = individual, events = the_events, accumulate = TRUE)
+
+individual_to_df <- function(individual){
+  
+  df1 <- data.frame(
+    birth_date = individual$birth_date, 
+    death_date = individual$death_date
+  )
+  
+  df2<- as.data.frame(individual$anthropometric_measures)
+  
+  return(cbind(df1, df2))
+  
+}
+
+individual_02 %>% 
+  purrr::map(individual_to_df) %>%
+  bind_rows()
+```
